@@ -11,7 +11,7 @@ const handler = async (event) => {
     if (!num1 || !num2 || !isNumeric(num1) || !isNumeric(num2)) {
       return {
         statusCode: 400,
-        body: "Please provide valid num1 and num2!!!",
+        body: JSON.stringify({ error: "Please provide num1 and num2!" }),
       };
     }
 

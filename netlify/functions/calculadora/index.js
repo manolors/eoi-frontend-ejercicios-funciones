@@ -24,7 +24,7 @@ const handler = async (event) => {
     if (!body) {
       return {
         statusCode: 400,
-        body: "Please provide num1 and num2!",
+        body: JSON.stringify({ error: "Please provide num1 and num2!" }),
       };
     }
 
@@ -35,14 +35,14 @@ const handler = async (event) => {
     if (!num1 || !num2 || !isNumeric(num1) || !isNumeric(num2)) {
       return {
         statusCode: 400,
-        body: "Please provide valid num1 and num2!",
+        body: JSON.stringify({ error: "Please provide num1 and num2!" }),
       };
     }
 
     if (!operaciones[operacion]) {
       return {
         statusCode: 400,
-        body: `Operación no válida: "${operacion}". Operaciones disponibles: ` + Object.keys(operaciones).join(", "),
+        body: JSON.stringify({ error: `Operación no válida: "${operacion}". Operaciones disponibles: ` + Object.keys(operaciones).join(", ") }),
       };
     }
 
